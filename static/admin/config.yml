@@ -1,0 +1,95 @@
+backend:
+  name: git-gateway
+  branch: master
+
+media_folder: static/img
+public_folder: /img
+
+collections:
+  - name: "exhibition"
+    label: "Exhibition"
+    folder: "src/pages/exhibition"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "exhibition-post"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "English Title", name: "englishtitle", widget: "string", required: false}
+      - {label: "Author", name: "author", widget: "string"}
+      - {label: "English Author", name: "englishauthor", widget: "string", required: false}
+      - {label: "Thumbnail", name: "thumbnail", widget: "image"}
+      - {label: "Start Date", name: "startdate", widget: "datetime"}
+      - {label: "End Date", name: "enddate", widget: "datetime"}
+      # - {label: "Description", name: "description", widget: "text"}
+      - {label: "Location", name: "location", widget: "string"}
+      - {label: "English Location", name: "englishlocation", widget: "string", required: false}
+      - {label: "Sponsor", name: "sponsor", widget: "string"}
+      - {label: "English Sponsor", name: "englishsponsor", widget: "string", required: false}
+      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Tags", name: "tags", widget: "list"}
+
+  - name: "program"
+    label: "Program"
+    folder: "src/pages/program"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "program-post"}
+      - {label: "Category", name: "category", widget: "string"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "English Title", name: "englishtitle", widget: "string", required: false}
+      - {label: "Author", name: "author", widget: "string"}
+      - {label: "English Author", name: "englishauthor", widget: "string", required: false}
+      - {label: "Thumbnail", name: "thumbnail", widget: "image"}
+      - {label: "Date", name: "date", widget: "datetime"}
+      # - {label: "Description", name: "description", widget: "text"}
+      - {label: "Location", name: "location", widget: "string"}
+      - {label: "English Location", name: "englishlocation", widget: "string", required: false}
+      - {label: "Sponsor", name: "sponsor", widget: "string"}
+      - {label: "English Sponsor", name: "englishsponsor", widget: "string", required: false}
+      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Tags", name: "tags", widget: "list"}
+
+  - label: "Landing"
+    name: "landing"
+    folder: "src/pages/landing"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "landing-post"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "English Title", name: "englishtitle", widget: "string"}
+      - {label: "Author", name: "author", widget: "string"}
+      - {label: "Author English Name", name: "authorenglish", widget: "string"}
+      - {label: "Type", name: "type", widget: "select", options: ["exhibition", "program"]}
+      - {label: "State", name: "now", widget: "select", options: ["ongoing", "upcoming"]}      
+      - {label: "Thumbnail", name: "thumbnail", widget: "image"}
+      - {label: "Start Date", name: "startdate", widget: "datetime"}
+      - {label: "End Date", name: "enddate", widget: "datetime", required: false}
+      - {label: "Description", name: "description", widget: "markdown"}
+      - {label: "Join Link", name: "join", widget: "text", required: false}
+
+  - name: "pages"
+    label: "Pages"
+    files:
+      - file: "src/pages/about/index.md"
+        label: "About"
+        name: "about"
+        fields:
+          - {label: "Template Key", name: "templateKey", widget: "hidden", default: "about-page"}
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Body", name: "body", widget: "markdown"}
+      - file: "src/pages/products/index.md"
+        label: "Products Page"
+        name: "products"
+        fields: 
+          - {label: "Template Key", name: "templateKey", widget: "hidden", default: "product-page"}
+          - {label: Title, name: title, widget: string}
+          - {label: Image, name: image, widget: image}
+          - {label: Heading, name: heading, widget: string}
+          - {label: Description, name: description, widget: string}
+          - {label: Intro, name: intro, widget: object, fields: [{label: Heading, name: heading, widget: string}, {label: Description, name: description, widget: text}, {label: Blurbs, name: blurbs, widget: list, fields: [{label: Image, name: image, widget: image}, {label: Text, name: text, widget: text}]}]}
+          - {label: Main, name: main, widget: object, fields: [{label: Heading, name: heading, widget: string}, {label: Description, name: description, widget: text}, {label: Image1, name: image1, widget: object, fields: [{label: Image, name: image, widget: image}, {label: Alt, name: alt, widget: string}]}, {label: Image2, name: image2, widget: object, fields: [{label: Image, name: image, widget: image}, {label: Alt, name: alt, widget: string}]}, {label: Image3, name: image3, widget: object, fields: [{label: Image, name: image, widget: image}, {label: Alt, name: alt, widget: string}]}]}
+          - {label: Testimonials, name: testimonials, widget: list, fields: [{label: Quote, name: quote, widget: string}, {label: Author, name: author, widget: string}]}
+          - {label: Full_image, name: full_image, widget: image}
+          - {label: Pricing, name: pricing, widget: object, fields: [{label: Heading, name: heading, widget: string}, {label: Description, name: description, widget: string}, {label: Plans, name: plans, widget: list, fields: [{label: Plan, name: plan, widget: string}, {label: Price, name: price, widget: string}, {label: Description, name: description, widget: string}, {label: Items, name: items, widget: list}]}]}
